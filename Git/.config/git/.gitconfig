@@ -1,0 +1,7 @@
+[user]
+	name = Rishi K.
+	email = contact.rishikmr@gmail.com
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
