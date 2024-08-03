@@ -1,6 +1,6 @@
 # Dotfiles
 
-**Using `stow` and `git` for maintaining and tracking my Linux configuration files.**
+**Using [`stow`](https://www.gnu.org/software/stow/) and `git` for maintaining and tracking my Linux configuration files.**
 
 ## Applying the Configurations
 
