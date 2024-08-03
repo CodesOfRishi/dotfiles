@@ -9,3 +9,7 @@ git clone https://github.com/CodesOfRishi/dotfiles.git $HOME/dotfiles/
 cd dotfiles
 stow */
 ```
+
+## Neovim
+
+My Neovim configurations can be found [here](https://github.com/CodesOfRishi/dotfiles.nvim).
