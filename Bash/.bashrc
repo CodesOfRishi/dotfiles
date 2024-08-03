@@ -61,6 +61,8 @@ eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 source "${HOME}/commandline-plugins/dev/navita/navita.sh"
 alias cd="__navita__"
 
+[[ -d "${HOME}/dotfiles" ]] && alias dots="__navita__ ~/dotfiles"
+
 # custom prompt
 source ~/.config/bash/git-prompt.sh # git
 export GIT_PS1_SHOWDIRTYSTATE=1
