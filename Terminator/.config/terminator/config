@@ -1,0 +1,27 @@
+[global_config]
+  window_state = maximise
+[keybindings]
+  go_up = <Alt>K
+  go_down = <Alt>J
+  go_left = <Alt>H
+  go_right = <Alt>L
+  split_horiz = <Ctrl><Alt>J
+  split_vert = <Ctrl><Alt>L
+  layout_launcher = ""
+[profiles]
+  [[default]]
+    background_darkness = 0.2
+    cursor_shape = underline
+    font = JetBrainsMonoNL Nerd Font Mono 11
+    foreground_color = "#ffffff"
+    use_system_font = False
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = Rishi
+[plugins]
