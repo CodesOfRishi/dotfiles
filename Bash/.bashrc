@@ -52,13 +52,13 @@ eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
 # # A bash prompt that displays information about the current git repository.
 # # REF: https://github.com/magicmonty/bash-git-prompt
-# if [ -f "$HOME/Commandline-Plugins/bash-git-prompt/gitprompt.sh" ]; then
+# if [ -f "$HOME/commandline-plugins/bash-git-prompt/gitprompt.sh" ]; then
 #     GIT_PROMPT_ONLY_IN_REPO=1
-#     source "$HOME/Commandline-Plugins/bash-git-prompt/gitprompt.sh"
+#     source "$HOME/commandline-plugins/bash-git-prompt/gitprompt.sh"
 # fi
 
 # testing navita tool
-source "${HOME}/Commandline-Plugins/dev/navita/navita.sh"
+source "${HOME}/commandline-plugins/dev/navita/navita.sh"
 alias cd="__navita__"
 
 # custom prompt
