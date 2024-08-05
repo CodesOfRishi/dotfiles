@@ -59,7 +59,7 @@ eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
 # testing navita tool
 source "${HOME}/commandline-plugins/dev/navita/navita.sh"
-alias cd="__navita__"
+[[ -d "${HOME}/dotfiles" ]] && alias dots="__navita__ ${HOME}/dotfiles"
 
 # git
 if [[ $(whereis -b fzf | awk '{print $2}') = *fzf ]]; then
