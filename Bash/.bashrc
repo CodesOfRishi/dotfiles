@@ -61,7 +61,12 @@ eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 source "${HOME}/commandline-plugins/dev/navita/navita.sh"
 alias cd="__navita__"
 
-[[ -d "${HOME}/dotfiles" ]] && alias dots="__navita__ ~/dotfiles"
+# git
+if [[ $(whereis -b fzf | awk '{print $2}') = *fzf ]]; then
+	gl() {
+		git log --oneline --color=always | fzf --layout=reverse-list --preview="git show {1} --color=always" --ansi
+	}
+fi
 
 # custom prompt
 source ~/.config/bash/git-prompt.sh # git
