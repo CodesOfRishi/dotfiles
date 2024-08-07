@@ -7,6 +7,10 @@ fi
 
 # search & edit files
 efile() {
-	local filename="$( find -L . -type f -not -path './.git/*' | fzf --preview="bat --color=always {}" )"
-	[[ ! -z "${filename}" ]] && ${EDITOR} "${filename}"
+	if [[ $( whereis -b bat | cut -d' ' -f2 ) ]]; then
+		local filename="$( find -L . -type f -not -path './.git/*' | fzf --preview="bat --color=always {}" )"
+	else
+		local filename="$( find -L . -type f -not -path './.git/*' | fzf )"
+	fi
+	[[ ! -z "${filename}" ]] && "${EDITOR}" "${filename}"
 }
