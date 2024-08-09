@@ -66,7 +66,7 @@ source "${HOME}/commandline-plugins/dev/navita/navita.sh"
 # ── custom prompt ─────────────────────────────────────────────────────
 source ~/.config/bash/git-prompt.sh # git
 export GIT_PS1_SHOWDIRTYSTATE=1
-export PS1='\e[01;36m\A\e[0m \e[01;32m\u@\h\e[0m \e[01;34m\w\e[0m $(__git_ps1 "(\e[01;33m%s\e[0m)")\$ '
+export PS1='\e[01;36m\A\e[0m \e[01;32m\u\e[0m \e[01;34m\w\e[0m $(__git_ps1 "(\e[01;33m%s\e[0m)")\$ '
 
 # ── Source utility functions ──────────────────────────────────────────
 [[ -f "$HOME/.utilities.bash" ]] && source "$HOME/.utilities.bash"
