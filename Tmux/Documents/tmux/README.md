@@ -102,16 +102,15 @@ tmux attach -d mysession
 
 This command attaches to a tmux session named "mysession" and detaches any existing clients that may be attached to it.
 
-> [!info]
-> <details>
->     <summary><b>What's the difference between client and session here?</b></summary>
->     <br>In tmux, a session is a collection of pseudo-terminals (think of them as virtual terminals) that are connected together. A session can have multiple windows and panes, and each window can have its own shell or program running.<br><br>
->     A client, on the other hand, is a program that connects to a tmux session. When you run tmux attach, you are creating a new client that connects to an existing session. Multiple clients can be connected to the same session at the same time, allowing multiple people to collaborate on the same session or allowing you to connect to the same session from multiple devices.<br><br>
->     Think of it like a chat room:
->     - The session is the chat room itself, where all the conversation happens.
->     - A client is like a person who joins the chat room. They can see the conversation, participate in it, and leave the room when they're done.
->     <br><br>When you run <code>tmux attach -d</code>, you're essentially "kicking out" any existing clients (people) from the chat room (session) before joining it yourself.
-> </details>
+<details>
+    <summary><b>What's the difference between client and session here?</b></summary>
+    <br>In tmux, a session is a collection of pseudo-terminals (think of them as virtual terminals) that are connected together. A session can have multiple windows and panes, and each window can have its own shell or program running.<br><br>
+    A client, on the other hand, is a program that connects to a tmux session. When you run tmux attach, you are creating a new client that connects to an existing session. Multiple clients can be connected to the same session at the same time, allowing multiple people to collaborate on the same session or allowing you to connect to the same session from multiple devices.<br><br>
+    Think of it like a chat room:
+    - The session is the chat room itself, where all the conversation happens.
+    - A client is like a person who joins the chat room. They can see the conversation, participate in it, and leave the room when they're done.
+    <br><br>When you run <code>tmux attach -d</code>, you're essentially "kicking out" any existing clients (people) from the chat room (session) before joining it yourself.
+</details>
 
 - The `new-session` command has a `-A` flag to attach to an existing session if it exists, or create a new one if it does not. For a session named `mysession`:
 
