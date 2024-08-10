@@ -10,23 +10,17 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-    for rc in ~/.bashrc.d/*; do
-        if [ -f "$rc" ]; then
-            . "$rc"
-        fi
-    done
-fi
-unset rc
-
 #          ╭──────────────────────────────────────────────────────────╮
 #          │                  RISHI'S CONFIGURATIONS                  │
 #          ╰──────────────────────────────────────────────────────────╯
 
-[[ -f "$HOME/environment.sh" ]] && source "$HOME/environment.sh" # source exports
-[[ -f "$HOME/aliases.sh" ]] && source "$HOME/aliases.sh" $ # source aliases
-[[ -f "$HOME/functions.sh" ]] && source "$HOME/functions.sh" # source functions
+# source user specific configs files (from $HOME/.bashrc.d)
+if [[ -d "$HOME/.bashrc.d" ]]; then
+	for rc in $HOME/.bashrc.d/*; do
+	[[ -f "$rc" ]] && source "$rc" 
+	done
+fi
+unset rc
 
 # custom prompt
 export PS1='\e[01;36m\A\e[0m \e[01;32m\u\e[0m \e[01;34m\w\e[0m \$ '
