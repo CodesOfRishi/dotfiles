@@ -1,9 +1,15 @@
-# git
-if [[ $(whereis -b fzf | awk '{print $2}') = *fzf ]]; then
-	gl() {
-		git log --oneline --color=always | fzf --layout=reverse-list --preview="git show {1} --color=always" --ansi
-	}
-fi
+# ┌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┐
+# ╎ bash functions ╎
+# └╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
+
+gh() {
+	[[ $( git rev-parse --is-inside-work-tree ) ]] || return
+	git log --date=relative --format="%C(auto)%h%d %C(white)%s %C(cyan)%an %C(black)%C(bold)%cd%C(auto)" --graph --color=always | 
+	fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+		--header 'Press CTRL-S to toggle sort' \
+		--preview='grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' | grep -o "[a-f0-9]\{7,\}"
+		# --preview="git show {1} --color=always" | grep -o "[a-f0-9]\{7,\}"
+}
 
 # search & edit files
 efile() {
