@@ -24,13 +24,14 @@ unset rc
 #          │                  RISHI'S CONFIGURATIONS                  │
 #          ╰──────────────────────────────────────────────────────────╯
 
-[[ -f "$HOME/environment.sh" ]] && source "$HOME/environment.sh"
-[[ -f "$HOME/aliases.sh" ]] && source "$HOME/aliases.sh"
+[[ -f "$HOME/environment.sh" ]] && source "$HOME/environment.sh" # source exports
+[[ -f "$HOME/aliases.sh" ]] && source "$HOME/aliases.sh" $ # source aliases
+[[ -f "$HOME/functions.sh" ]] && source "$HOME/functions.sh" # source functions
 
-# ── custom prompt ─────────────────────────────────────────────────────
+# custom prompt
 export PS1='\e[01;36m\A\e[0m \e[01;32m\u\e[0m \e[01;34m\w\e[0m \$ '
 
-# ── FZF ───────────────────────────────────────────────────────────────
+# FZF
 eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
 # A bash prompt that displays information about the current git repository.
@@ -83,9 +84,7 @@ if [ -f "$HOME/commandline-plugins/bash-git-prompt/gitprompt.sh" ]; then
     source "$HOME/commandline-plugins/bash-git-prompt/gitprompt.sh"
 fi
 
-# ── testing navita tool ───────────────────────────────────────────────
+# testing navita tool
 source "${HOME}/commandline-plugins/dev/navita/navita.sh"
 [[ -d "${HOME}/dotfiles" ]] && alias dots="__navita__ ${HOME}/dotfiles"
 
-# ── source functions ──────────────────────────────────────────────────
-[[ -f "$HOME/functions.sh" ]] && source "$HOME/functions.sh"
