@@ -44,7 +44,8 @@ As new windows are opened, the window list grows. If there are too many windows 
 - For keys that control Tmux itself, a special key must be pressed first - this is called the **Prefix key**.
 <br><br>
 
-> [!note] The default Prefix key is `C-b`, which means the `Ctrl` key and `b` (pressed together).
+> [!note] 
+> The default Prefix key is `C-b`, which means the `Ctrl` key and `b` (pressed together).
 
 - In Tmux, modifier keys are shown by prefixing a key with `C-` for the control key, `M-` for the meta key (normally Alt on modern computers) and `S-` for the shift key. 
 - These may be combined together, so `C-M-x` means pressing the control key, meta key and x together.
@@ -182,7 +183,8 @@ A pane is created splittin a window. This is done with the `split-window` comman
 - `-f` creates a new pane spanning the full window height (with `-h`) or full window width (with `-v`), instead of splitting the active pane.
 - `-b` puts the new pane to the left or above of the pane being split, instead of to the right or below.
 
-> [!tip] A command to be run in the new pane may be given to `split-window` in the same way as `new-session` and `new-window`. 
+> [!tip] 
+A command to be run in the new pane may be given to `split-window` in the same way as `new-session` and `new-window`. 
 
 ### Changing the Current Window
 
@@ -192,6 +194,7 @@ A pane is created splittin a window. This is done with the `split-window` comman
 - `prefix p` changes to the previous window in the window list by number.
 - `prefix l` changes to the last window, which is the window that was last the current window before the window that is now.
 
-> [!note] These are all variations of the `select-window` command.
+> [!note] 
+These are all variations of the `select-window` command.
 
 
