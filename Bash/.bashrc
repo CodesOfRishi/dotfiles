@@ -28,9 +28,6 @@ if [[ -d "$HOME/.bashrc.d" ]]; then
 fi
 unset rc
 
-# custom prompt
-export PS1='\e[01;36m\A\e[0m \e[01;32m\u\e[0m \e[01;34m\w\e[0m \$ '
-
 # FZF
 eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
 
