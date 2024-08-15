@@ -30,7 +30,7 @@ SetPS1() {
 	local non_git_parent_path && non_git_parent_path="${PWD%%${git_curr_dir}}"
 	non_git_parent_path=${non_git_parent_path/#${HOME}/\~}
 
-	PS1="${red_bold}${__EXIT_CODE}${col_rst}${cyan_bold}\A${col_rst} ${green_bold}\u${col_rst} ${grey_bold}${non_git_parent_path}${col_rst}${blue_bold}${git_curr_dir}${col_rst} $(__git_ps1 "(\e[01;33m%s\e[0m)")\$ "
+	PS1="${red_bold}${__EXIT_CODE}${cyan_bold}\A ${green_bold}\u ${grey_bold}${non_git_parent_path}${blue_bold}${git_curr_dir}${col_rst} $(__git_ps1 "(\e[01;33m%s\e[0m)")\$ "
 }
 
 export PROMPT_COMMAND="SetPS1"
