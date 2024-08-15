@@ -23,7 +23,7 @@ fi
 # source user specific configs files (from $HOME/.bashrc.d)
 if [[ -d "$HOME/.bashrc.d" ]]; then
 	for rc in $HOME/.bashrc.d/*; do
-	[[ -f "$rc" ]] && [[ "$rc" =~ \.sh$ ]] && source "$rc" 
+	[[ -f "$rc" ]] && [[ "$rc" =~ \.(sh|bash)$ ]] && source "$rc" 
 	done
 fi
 unset rc
