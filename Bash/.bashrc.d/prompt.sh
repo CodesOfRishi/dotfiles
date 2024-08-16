@@ -31,8 +31,13 @@ SetPS1() {
 	non_git_parent_path=${non_git_parent_path/#${HOME}/\~}
 
 	if [[ -h "${PWD}" ]]; then
-		PS1="${red_bold}${__EXIT_CODE}${cyan_bold}\A ${green_bold}\u ${grey_bold}${non_git_parent_path}${col_rst} ➜ ${blue_bold}${git_curr_dir}${col_rst}
+		if [[ -n "${git_curr_dir}" ]]; then
+			PS1="${red_bold}${__EXIT_CODE}${cyan_bold}\A ${green_bold}\u ${grey_bold}${non_git_parent_path}${col_rst} ➜ ${blue_bold}${git_curr_dir}${col_rst}
 $(__git_ps1 "(\e[01;33m%s\e[0m)")\$ "
+		else
+			PS1="${red_bold}${__EXIT_CODE}${cyan_bold}\A ${green_bold}\u ${grey_bold}${non_git_parent_path}${col_rst} ➜ ${grey_bold}$( readlink "${PWD}" )${col_rst}
+$(__git_ps1 "(\e[01;33m%s\e[0m)")\$ "
+		fi
 	else
 		PS1="${red_bold}${__EXIT_CODE}${cyan_bold}\A ${green_bold}\u ${grey_bold}${non_git_parent_path}${blue_bold}${git_curr_dir}${col_rst}
 $(__git_ps1 "(\e[01;33m%s\e[0m)")\$ "
