@@ -7,7 +7,7 @@
 [[ -f "$HOME/.config/bash/git-prompt.sh" ]] && source "$HOME/.config/bash/git-prompt.sh" && export GIT_PS1_SHOWDIRTYSTATE=1
 
 SetPS1() {
-	local __EXIT_CODE=" $? "
+	local __EXIT_CODE="$? "
 	[[ "${__EXIT_CODE}" -le 0 ]] && __EXIT_CODE=""
 
 	local red_bold && red_bold="\033[1;38;2;255;0;0m"
