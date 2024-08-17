@@ -18,6 +18,8 @@ fi
 # (keep this configuration as early as possible, e.g.- before aliases and custom functions)
 if [[ $( command -v tmux &> /dev/null ) -eq 0 ]] && [[ $( tmux has-session ) -eq 0 ]] && [[ -n "${PS1}" ]] && [[ ! "${TERM}" =~ screen ]] && [[ ! "${TERM}" =~ (t|T)mux ]] && [[ -z "${TMUX}" ]]; then
 	exec tmux new-session -s rishi-s1 -n 1stWin
+elif [[ "$( tmux list-sessions | wc -l )" -eq 1 ]] && [[ "$( tmux list-windows | wc -l )" -eq 1 ]] && [[ "$( tmux list-panes | wc -l )" -eq 1 ]]; then
+	[[ "$( whereis -b fastfetch | cut -d ' ' -f2 )" =~ .*\/fastfetch$ ]] && fastfetch
 fi
 
 # source user specific configs files (from $HOME/.bashrc.d)
