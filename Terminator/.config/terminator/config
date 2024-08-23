@@ -1,13 +1,51 @@
 [global_config]
-  window_state = maximise
+  window_state = fullscreen
 [keybindings]
-  go_up = <Alt>K
-  go_down = <Alt>J
-  go_left = <Alt>H
-  go_right = <Alt>L
-  split_horiz = <Ctrl><Alt>J
-  split_vert = <Ctrl><Alt>L
+  zoom_in = ""
+  zoom_out = ""
+  zoom_normal = ""
+  new_tab = ""
+  cycle_next = ""
+  cycle_prev = ""
+  go_next = ""
+  go_prev = ""
+  go_up = ""
+  go_down = ""
+  go_left = ""
+  go_right = ""
+  rotate_cw = ""
+  rotate_ccw = ""
+  split_auto = ""
+  split_horiz = ""
+  split_vert = ""
+  close_term = ""
+  toggle_scrollbar = ""
+  search = ""
+  close_window = ""
+  resize_up = ""
+  resize_down = ""
+  resize_left = ""
+  resize_right = ""
+  move_tab_right = ""
+  move_tab_left = ""
+  toggle_zoom = ""
+  scaled_zoom = ""
+  next_tab = ""
+  prev_tab = ""
+  reset = ""
+  reset_clear = ""
+  hide_window = ""
+  group_all = ""
+  ungroup_all = ""
+  ungroup_win = ""
+  group_tab = ""
+  ungroup_tab = ""
+  new_window = ""
+  edit_window_title = ""
+  edit_tab_title = ""
+  edit_terminal_title = ""
   layout_launcher = ""
+  preferences_keybindings = ""
 [profiles]
   [[default]]
     background_darkness = 0.2
@@ -15,6 +53,7 @@
     font = JetBrainsMonoNL Nerd Font Mono 11
     foreground_color = "#ffffff"
     use_system_font = False
+    title_transmit_bg_color = "#9a9996"
 [layouts]
   [[default]]
     [[[window0]]]
