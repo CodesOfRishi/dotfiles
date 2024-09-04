@@ -31,7 +31,7 @@ fi
 unset rc
 
 # FZF
-eval "$(fzf --bash)" # Set up fzf key bindings and fuzzy completion
+[[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
 
 # testing navita tool
 source "${HOME}/commandline-plugins/dev/navita/navita.sh"
