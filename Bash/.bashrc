@@ -5,6 +5,17 @@
 # ██╗██████╔╝██║  ██║███████║██║  ██║██║  ██║╚██████╗
 # ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ Rishi K.
 
+# start a Tmux session if not already running
+if type -apf tmux &> /dev/null && ! tmux has-session &> /dev/null && [[ -n "${PS1}" ]] && [[ ! "${TERM}" =~ screen ]] && [[ ! "${TERM}" =~ (t|T)mux ]] && [[ -z "${TMUX}" ]]; then
+	exec tmux -u new-session -s rishi-s1 -n 1stWin
+elif [[ "$( tmux list-panes | wc -l )" -eq 1 ]]; then
+	[[ "$( whereis -b fastfetch | cut -d ' ' -f2 )" =~ .*\/fastfetch$ ]] && fastfetch
+fi
+
+# ┌───────────────────────────────────────────┐
+# │ Default Linux Mint .bashrc configurations │
+# └───────────────────────────────────────────┘
+
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -90,17 +101,9 @@ if ! shopt -oq posix; then
   fi
 fi
 
-#          ╭──────────────────────────────────────────────────────────╮
-#          │                  RISHI'S CONFIGURATIONS                  │
-#          ╰──────────────────────────────────────────────────────────╯
-
-# start a Tmux session if not already running
-# (keep this configuration as early as possible, e.g.- before aliases and custom functions)
-if [[ $( command -v tmux &> /dev/null ) -eq 0 ]] && [[ $( tmux has-session ) -eq 0 ]] && [[ -n "${PS1}" ]] && [[ ! "${TERM}" =~ screen ]] && [[ ! "${TERM}" =~ (t|T)mux ]] && [[ -z "${TMUX}" ]]; then
-	exec tmux new-session -s rishi-s1 -n 1stWin
-elif [[ "$( tmux list-panes | wc -l )" -eq 1 ]]; then
-	[[ "$( whereis -b fastfetch | cut -d ' ' -f2 )" =~ .*\/fastfetch$ ]] && fastfetch
-fi
+# ┌─────────────────────────────────┐
+# │ RISHI'S CONFIGURATIONS (contd.) │
+# └─────────────────────────────────┘
 
 # source user specific configs files (from $HOME/.bashrc.d)
 if [[ -d "$HOME/.bashrc.d" ]]; then
