@@ -4,7 +4,7 @@
 
 # Git prompt
 # Ref: https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
-[[ -f "$HOME/.config/bash/git-prompt.sh" ]] && source "$HOME/.config/bash/git-prompt.sh" && export GIT_PS1_SHOWDIRTYSTATE=1
+[[ -f "$HOME/commandline-plugins/git-prompt.sh" ]] && source "$HOME/commandline-plugins/git-prompt.sh" && export GIT_PS1_SHOWDIRTYSTATE=1
 
 SetPS1() {
 	local __EXIT_CODE="$? "
