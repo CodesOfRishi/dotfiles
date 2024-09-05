@@ -36,6 +36,9 @@ unset rc
 # testing navita tool
 if [[ -f "${HOME}/commandline-plugins/dev/navita/navita.sh" ]]; then 
 	source "${HOME}/commandline-plugins/dev/navita/navita.sh"
-	[[ -d "${HOME}/dotfiles" ]] && alias dots="__navita__ ${HOME}/dotfiles"
+	if [[ -d "${HOME}/dotfiles" ]]; then 
+		alias dots="__navita__ ${HOME}/dotfiles"
+		( grep -q -m 1 -E '^\^/home/rishi/dotfiles\$$' $NAVITA_IGNOREFILE ) || printf "%s\n" "^/home/rishi/dotfiles$" >> $NAVITA_IGNOREFILE
+	fi
 fi
 
