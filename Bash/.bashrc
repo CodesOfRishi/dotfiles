@@ -118,7 +118,7 @@ if [[ -f "${HOME}/commandline-plugins/dev/navita/navita.sh" ]]; then
 	source "${HOME}/commandline-plugins/dev/navita/navita.sh"
 	if [[ -d "${HOME}/dotfiles" ]]; then 
 		alias dots="__navita__ ${HOME}/dotfiles"
-		( grep -q -m 1 -E '^\^/home/rishi/dotfiles\$$' $NAVITA_IGNOREFILE ) || printf "%s\n" "^/home/rishi/dotfiles$" >> $NAVITA_IGNOREFILE
+		grep -q -m 1 -F "^/home/rishi/dotfiles$" "$NAVITA_IGNOREFILE" || echo "^/home/rishi/dotfiles$" >> "$NAVITA_IGNOREFILE"
 	fi
 fi
 
