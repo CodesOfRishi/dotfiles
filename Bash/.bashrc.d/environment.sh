@@ -9,7 +9,9 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-[[ $(whereis -b nvim | awk '{print $2}') = *nvim ]] && export EDITOR="nvim"
+if type -apf nvim &> /dev/null; then 
+	export EDITOR="nvim"
+fi
 
 # REF: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
 export XDG_CONFIG_HOME="$HOME/.config" 
