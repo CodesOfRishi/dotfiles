@@ -3,7 +3,7 @@
 	email = contact.rishikmr@gmail.com
 [core]
 	editor = nvim
-	pager = delta
+	pager = delta --line-numbers
 [init]
 	defaultBranch = main
 [interactive]
