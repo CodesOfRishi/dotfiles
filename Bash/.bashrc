@@ -8,8 +8,8 @@
 # start a Tmux session if not already running
 if type -apf tmux &> /dev/null && ! tmux has-session &> /dev/null && [[ -n "${PS1}" ]] && [[ ! "${TERM}" =~ screen ]] && [[ ! "${TERM}" =~ (t|T)mux ]] && [[ -z "${TMUX}" ]]; then
 	exec tmux -u new-session -s rishi-s1 -n 1stWin
-elif [[ "$( tmux list-panes | wc -l )" -eq 1 ]]; then
-	[[ "$( whereis -b fastfetch | cut -d ' ' -f2 )" =~ .*\/fastfetch$ ]] && fastfetch
+elif [[ "$( tmux list-panes | wc -l )" -eq 1 ]] && type -apf fastfetch &> /dev/null; then
+	fastfetch 
 fi
 
 # ┌───────────────────────────────────────────┐
