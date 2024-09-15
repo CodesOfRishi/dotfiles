@@ -2,3 +2,4 @@
 # set show-mode-in-prompt on
 
 set completion-ignore-case
+set colored-completion-prefix
