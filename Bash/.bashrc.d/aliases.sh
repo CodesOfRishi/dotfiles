@@ -2,8 +2,8 @@
 # ╎ Aliases ╎
 # └╌╌╌╌╌╌╌╌╌┘
 
-alias ll="ls -lshF --color=auto"
-alias la="ls -lashF --color=auto"
+alias ll="ls -lhF --color=auto"
+alias la="ls -lahF --color=auto"
 alias lc="ls -lCF --color=auto"
 alias dir="dir --color=auto"
 alias vdir="vdir --color=auto"
