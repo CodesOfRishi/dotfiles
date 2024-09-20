@@ -13,30 +13,19 @@ gh() {
 		# --preview="git show {1} --color=always" | grep -o "[a-f0-9]\{7,\}"
 }
 
-# search & edit files
-v() {
-	if [[ -z "${*}" ]]; then 
-		"${EDITOR}"
-	else
-		case "$1" in
-			"-n"|"--new") "${EDITOR}" "${@:2}";;
-			*) 
-				if [[ $( whereis -b bat | cut -d' ' -f2 ) ]]; then
-					local filename="$( find -L . -type f -not -path './.git/*' | fzf --prompt="nvim> " --exact --select-1 --exit-0 --exact --query="${*}" --preview="bat --color=always {}" )"
-				else
-					local filename="$( find -L . -type f -not -path './.git/*' | fzf --prompt="nvim> " --exact --select-1 --exit-0 --exact --query="${*}" --preview="cat {}" )"
-				fi
-
-				case "$?" in
-					1) printf "No match!\n" 2>&1;;
-					2) ;;
-					130) ;;
-					*)
-						[[ ! -z "${filename}" ]] && "${EDITOR}" "${filename[@]}";;
-				esac
-				;;
-		esac
+fl() {
+	if [[ ! -f "${1}" ]]; then
+		printf "Invalid file\n" >&2
+		return 1
 	fi
+
+	grep -n -H -G '^.*$' "${1}" | \
+		fzf \
+			--color "hl:-1:underline,hl+:-1:underline:reverse" \
+			--delimiter=":" \
+			--preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+			--preview="batcat --language=bash --color=always --highlight-line {2} {1}" \
+			--bind 'enter:become(nvim -c {2} {1})'
 }
 
 # # search & edit files
