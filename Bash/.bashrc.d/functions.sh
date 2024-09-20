@@ -38,3 +38,29 @@ v() {
 		esac
 	fi
 }
+
+# # search & edit files
+# v() {
+# 	if [[ -z "${*}" ]]; then 
+# 		"${EDITOR}"
+# 	else
+# 		case "$1" in
+# 			"-n"|"--new") "${EDITOR}" "${@:2}";;
+# 			*) 
+# 				if [[ $( whereis -b bat | cut -d' ' -f2 ) ]]; then
+# 					local filename="$( find -L . -type f -not -path './.git/*' | fzf --prompt="nvim> " --exact --select-1 --exit-0 --exact --query="${*}" --preview="bat --color=always {}" )"
+# 				else
+# 					local filename="$( find -L . -type f -not -path './.git/*' | fzf --prompt="nvim> " --exact --select-1 --exit-0 --exact --query="${*}" --preview="cat {}" )"
+# 				fi
+#
+# 				case "$?" in
+# 					1) printf "No match!\n" 2>&1;;
+# 					2) ;;
+# 					130) ;;
+# 					*)
+# 						[[ ! -z "${filename}" ]] && "${EDITOR}" "${filename[@]}";;
+# 				esac
+# 				;;
+# 		esac
+# 	fi
+# }
