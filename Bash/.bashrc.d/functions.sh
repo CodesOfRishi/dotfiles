@@ -51,6 +51,7 @@ fl() {
 
 		printf "${colr_orange}%s${colr_grey}${delim}${colr_green}%s${colr_grey}${delim}${colr_rst}%s\n" "${1}" "${line_no}" "${line}"
 	done < <(grep -n -G '^.*$' "${1}") | fzf \
+		+s \
 		--ansi \
 		--color "hl:-1:underline,hl+:-1:underline:reverse" \
 		--delimiter="${delim}" \
