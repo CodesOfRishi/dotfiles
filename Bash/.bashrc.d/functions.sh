@@ -19,13 +19,45 @@ fl() {
 		return 1
 	fi
 
-	grep -n -H -G '^.*$' "${1}" | \
-		fzf \
-			--color "hl:-1:underline,hl+:-1:underline:reverse" \
-			--delimiter=":" \
-			--preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
-			--preview="batcat --language=bash --color=always --highlight-line {2} {1}" \
-			--bind 'enter:become(nvim -c {2} {1})'
+	if [[ -z "${2}" ]]; then
+		local -a delimiter=( "" "" "󰇙" "󰴼" "󱋱" "󰇝" "" "󰿊" "󰤃" "" "" "󰕎" "" "󰜘" "󰕏" "󰘢" )
+		local delim
+		local all_delims_present=0
+		for delim in "${delimiter[@]}"; do
+			grep --silent -F "${delim}" "${1}" || break
+			(( all_delims_present++ ))
+		done
+
+		[[ "${all_delims_present}" -eq "${#delimiter[@]}" ]] && {
+			printf "The delimiters, %s are present in %s file. You will need to specifiy a delimiter manually as a second argument to the fl function.\n" "${delimiter[*]}" "${1}" >&2
+			return 1
+		}
+		unset delimiter
+		unset all_delims_present
+	else
+		local delim && delim="${2}"
+	fi
+
+
+	local line
+	local line_no
+	local colr_grey && colr_grey="\033[1;38;2;122;122;122m"
+	local colr_green && colr_green='\033[1;38;2;170;255;0m'
+	local colr_orange && colr_orange="\033[1;38;2;255;165;0m"
+	local colr_rst && colr_rst='\e[0m'
+	while read -r line; do
+		line_no="${line%%:*}"
+		line="${line#*:}"
+
+		printf "${colr_orange}%s${colr_grey}${delim}${colr_green}%s${colr_grey}${delim}${colr_rst}%s\n" "${1}" "${line_no}" "${line}"
+	done < <(grep -n -G '^.*$' "${1}") | fzf \
+		--ansi \
+		--color "hl:-1:underline,hl+:-1:underline:reverse" \
+		--delimiter="${delim}" \
+		--nth=3 \
+		--preview-window 'up,60%,border-bottom,+{2}+3/3,~3' \
+		--preview="batcat --language=bash --color=always --highlight-line {2} {1}" \
+		--bind 'enter:become(nvim -c {2} {1})'
 }
 
 # # search & edit files
