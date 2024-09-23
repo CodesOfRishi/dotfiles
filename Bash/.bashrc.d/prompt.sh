@@ -11,7 +11,7 @@ SetPS1() {
 	(( __EXIT_CODE <= 0 )) && __EXIT_CODE=""
 
 	local git_info="$(__git_ps1 "(\e[01;33m%s\e[0m)")"
-	[[ -n "${git_info}" ]] && git_info=" ${git_info} "
+	[[ -n "${git_info}" ]] && git_info="${git_info} "
 
 	local colr_rst && colr_rst="\e[0m"
 	local colr_grey && colr_grey="\033[1;38;2;122;122;122m"
