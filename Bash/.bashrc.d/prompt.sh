@@ -24,16 +24,16 @@ SetPS1() {
 	}
 
 	local _pwd="${PWD/#$HOME/\~}"
-	# curr_width = size_of(exitcode + currenttime + pwd + spaces)
-	local curr_width="$(( ${#__EXIT_CODE} + 5 + ${#_pwd} + 2 ))"
+	# curr_width = size_of(exitcode + currenttime + pwd + spaces + date)
+	local curr_width="$(( ${#__EXIT_CODE} + 5 + ${#_pwd} + 2 + 11 ))"
 
 	if [[ -n "${__EXIT_CODE}" ]]; then
 		local colr_red && colr_red="\033[1;38;2;255;0;0m"
-		PS1="${colr_red}${__EXIT_CODE}${colr_grey}\A ${colr_blue}\w${colr_rst}${colr_grey} $(generate-horizontal-line $(( $COLUMNS - $curr_width )))${colr_rst}"
+		PS1="${colr_red}${__EXIT_CODE}${colr_grey}\A ${colr_blue}\w${colr_rst}${colr_grey} $(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${colr_rst}"
 		PS1="${PS1}\n${git_info}${colr_red}󰁕${colr_rst} "
 	else
 		local colr_cyan && colr_cyan="\033[1;38;2;0;170;170m"
-		PS1="${colr_grey}\A ${colr_blue}\w${colr_rst}${colr_grey} $(generate-horizontal-line $(( $COLUMNS - $curr_width )))${colr_rst}"
+		PS1="${colr_grey}\A ${colr_blue}\w${colr_rst}${colr_grey} $(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${colr_rst}"
 		PS1="${PS1}\n${git_info}${colr_cyan}❱${colr_rst} "
 	fi
 }
