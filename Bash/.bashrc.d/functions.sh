@@ -53,6 +53,7 @@ fl() {
 	done < <(grep -n -G '^.*$' "${1}") | fzf \
 		+s \
 		--ansi \
+		--layout=reverse \
 		--color "hl:-1:underline,hl+:-1:underline:reverse" \
 		--delimiter="${delim}" \
 		--nth=3 \
