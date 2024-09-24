@@ -8,7 +8,7 @@
 
 SetPS1() {
 	local __EXIT_CODE="$? "
-	(( __EXIT_CODE <= 0 )) && __EXIT_CODE=""
+	(( __EXIT_CODE <= 0 )) && __EXIT_CODE="" || __EXIT_CODE="✘ ${__EXIT_CODE}"
 
 	local git_info="$(__git_ps1 "(\e[01;33m%s\e[0m)")"
 	[[ -n "${git_info}" ]] && git_info="${git_info} "
@@ -30,11 +30,11 @@ SetPS1() {
 
 	if [[ -n "${__EXIT_CODE}" ]]; then
 		local colr_red && colr_red="\033[1;38;2;255;0;0m"
-		PS1="${colr_red}${__EXIT_CODE}${colr_grey}\A ${colr_blue}\w${colr_rst}${colr_grey} $(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${colr_rst}"
+		PS1="${colr_grey}\A ${colr_blue}\w ${colr_grey}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) ${colr_red}${__EXIT_CODE}${colr_grey}\d${colr_rst}"
 		PS1="${PS1}\n${git_info}${colr_red}󰁕${colr_rst} "
 	else
 		local colr_cyan && colr_cyan="\033[1;38;2;0;170;170m"
-		PS1="${colr_grey}\A ${colr_blue}\w${colr_rst}${colr_grey} $(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${colr_rst}"
+		PS1="${colr_grey}\A ${colr_blue}\w ${colr_grey}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${colr_rst}"
 		PS1="${PS1}\n${git_info}${colr_cyan}❱${colr_rst} "
 	fi
 }
