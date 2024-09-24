@@ -26,6 +26,7 @@ SetPS1() {
 	local _pwd="${PWD/#$HOME/\~}"
 	# curr_width = size_of(exitcode + currenttime + pwd + spaces + date)
 	local curr_width="$(( ${#__EXIT_CODE} + 5 + ${#_pwd} + 2 + 11 ))"
+	(( curr_width = curr_width > COLUMNS ? COLUMNS : curr_width ))
 
 	if [[ -n "${__EXIT_CODE}" ]]; then
 		local colr_red && colr_red="\033[1;38;2;255;0;0m"
