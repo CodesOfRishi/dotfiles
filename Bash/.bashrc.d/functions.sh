@@ -62,6 +62,27 @@ fl() {
 		--bind 'enter:become(nvim -c {2} {1})'
 }
 
+commit_info() {
+	CommitTypes() {
+		local colr_orange && colr_orange="\033[1;38;2;255;165;0m"
+		local colr_rst && colr_rst='\e[0m'
+		printf "${colr_orange}feat${colr_rst}: A new feature\n"
+		printf "${colr_orange}fix${colr_rst}: A bug fix\n"
+		printf "${colr_orange}docs${colr_rst}: Documentation changes\n"
+		printf "${colr_orange}style${colr_rst}: Code style (formatting) changes\n"
+		printf "${colr_orange}refactor${colr_rst}: Code refactoring (no functionality changes)\n"
+		printf "${colr_orange}perf${colr_rst}: Performance improvements\n"
+		printf "${colr_orange}test${colr_rst}: Adding or updating tests\n"
+		printf "${colr_orange}chore${colr_rst}: Non-code changes (like build tools, configs)\n"
+		printf "${colr_orange}ci${colr_rst}: Continuous integration/deployment changes\n"
+		printf "${colr_orange}build${colr_rst}: Changes affecting the build system or dependencies\n"
+		printf "${colr_orange}revert${colr_rst}: Reverting a previous commit\n"
+		printf "${colr_orange}BREAKING CHANGE${colr_rst}: A major change that breaks compatibility\n"
+	}
+
+	CommitTypes | fzf --ansi
+}
+
 # # search & edit files
 # v() {
 # 	if [[ -z "${*}" ]]; then 
