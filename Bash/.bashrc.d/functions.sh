@@ -80,7 +80,13 @@ commit_info() {
 		printf "${colr_orange}BREAKING CHANGE${colr_rst}: A major change that breaks compatibility\n"
 	}
 
-	CommitTypes | fzf --ansi
+	local choice
+	choice="$(CommitTypes | fzf --ansi --query="${*}")" && choice="${choice%%:*}"
+	case "${choice}" in
+		"BREAKING CHANGE") 
+			[[ -f "$HOME/Documents/Git/breaking_change_info.md" ]] && batcat --language='markdown' "$HOME/Documents/Git/breaking_change_info.md"
+			;;
+	esac
 }
 
 # # search & edit files
