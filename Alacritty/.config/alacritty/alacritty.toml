@@ -1,0 +1,10 @@
+[window]
+decorations = "None"
+startup_mode = "Fullscreen"
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 11.2
+
+[cursor]
+style = { shape = "Underline", blinking = "On" }
