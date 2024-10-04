@@ -3,9 +3,9 @@
 # └╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
 
 gh() {
-	[[ $( git rev-parse --is-inside-work-tree ) ]] || return
-	git log --date=relative --format="%C(auto)%h%d %C(white)%s %C(cyan)%an %C(black)%C(bold)%cd%C(auto)" --graph --color=always | 
-	fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
+	[[ $( command git rev-parse --is-inside-work-tree ) ]] || return
+	command git log --date=relative --format="%C(auto)%h%d %C(white)%s %C(cyan)%an %C(black)%C(bold)%cd%C(auto)" --graph --color=always | 
+	command fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
 		--header 'Press CTRL-S to toggle sort' \
 		--preview='grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | delta -n' \
 		--bind 'enter:execute(grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | delta -n | less -R)'
@@ -24,7 +24,7 @@ fl() {
 		local delim
 		local all_delims_present=0
 		for delim in "${delimiter[@]}"; do
-			grep --silent -F "${delim}" "${1}" || break
+			command grep --silent -F "${delim}" "${1}" || break
 			(( all_delims_present++ ))
 		done
 
@@ -50,7 +50,7 @@ fl() {
 		line="${line#*:}"
 
 		printf "${colr_orange}%s${colr_grey}${delim}${colr_green}%s${colr_grey}${delim}${colr_rst}%s\n" "${1}" "${line_no}" "${line}"
-	done < <(grep -n -G '^.*$' "${1}") | fzf \
+	done < <(command grep -n -G '^.*$' "${1}") | command fzf \
 		--ansi \
 		--scheme=history \
 		--layout=reverse \
@@ -81,10 +81,10 @@ commit_info() {
 	}
 
 	local choice
-	choice="$(CommitTypes | fzf --ansi --query="${*}")" && choice="${choice%%:*}"
+	choice="$(CommitTypes | command fzf --ansi --query="${*}")" && choice="${choice%%:*}"
 	case "${choice}" in
 		"BREAKING CHANGE") 
-			[[ -f "$HOME/Documents/Git/breaking_change_info.md" ]] && batcat --language='markdown' "$HOME/Documents/Git/breaking_change_info.md"
+			[[ -f "$HOME/Documents/Git/breaking_change_info.md" ]] && command batcat --language='markdown' "$HOME/Documents/Git/breaking_change_info.md"
 			;;
 	esac
 }
