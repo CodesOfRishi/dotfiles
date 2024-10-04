@@ -19,6 +19,8 @@ editor_completion() {
 		--layout=reverse \
 		--bind=tab:down,btab:up \
 		--cycle)"; then
+
+		[[ -d "${selected_result}" ]] && selected_result="${selected_result}/"
 		COMPREPLY=( "${selected_result}" )
 	fi
 	printf '\e[5n'
