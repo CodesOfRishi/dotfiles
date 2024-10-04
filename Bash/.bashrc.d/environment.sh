@@ -9,8 +9,8 @@ fi
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
-if type -apf nvim &> /dev/null; then 
-	export EDITOR="nvim"
+if type -aP nvim &> /dev/null; then 
+	export EDITOR="$(type -P nvim)"
 fi
 
 # REF: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
