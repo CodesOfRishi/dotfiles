@@ -20,11 +20,11 @@ editor_completion() {
 		--bind=tab:down,btab:up \
 		--cycle)"; then
 
-		[[ -d "${selected_result}" ]] && selected_result="${selected_result}/"
+		[[ -d "${selected_result}" ]] && selected_result="${selected_result}/" || selected_result="${selected_result} "
 		COMPREPLY=( "${selected_result}" )
 	fi
 	printf '\e[5n'
 }
 
 # `v` is aliased to nvim
-complete -F editor_completion "v"
+complete -o nospace -F editor_completion "v"
