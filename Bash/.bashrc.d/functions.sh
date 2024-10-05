@@ -84,7 +84,7 @@ commit_info() {
 	choice="$(CommitTypes | command fzf --ansi --query="${*}")" && choice="${choice%%:*}"
 	case "${choice}" in
 		"BREAKING CHANGE") 
-			[[ -f "$HOME/Documents/Git/breaking_change_info.md" ]] && command batcat --language='markdown' "$HOME/Documents/Git/breaking_change_info.md"
+			[[ -f "$HOME/Documents/git/breaking_change_info.md" ]] && command batcat --language='markdown' "$HOME/Documents/git/breaking_change_info.md"
 			;;
 	esac
 }
