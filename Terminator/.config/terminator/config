@@ -14,5 +14,5 @@
     [[[child1]]]
       type = Terminal
       parent = window0
-	  profile = Rishi
+      profile = Rishi
 [plugins]
