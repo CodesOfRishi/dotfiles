@@ -10,12 +10,13 @@ SetPS1() {
 	local __EXIT_CODE="$? "
 	(( __EXIT_CODE <= 0 )) && __EXIT_CODE="" || __EXIT_CODE="✘ ${__EXIT_CODE}"
 
-	local git_info="$(__git_ps1 "(\e[01;33m%s\e[0m)")"
-	[[ -n "${git_info}" ]] && git_info="${git_info} "
-
 	local colr_rst && colr_rst="\e[0m"
+	local colr_yellow && colr_yellow="\e[01;33m"
 	local colr_grey && colr_grey="\033[1;38;2;122;122;122m"
 	local colr_blue && colr_blue="\033[1;38;2;0;150;255m"
+
+	local git_info="$(__git_ps1 "%s")"
+	[[ -n "${git_info}" ]] && git_info="(${colr_yellow} ${git_info}${colr_rst}) "
 
 	generate-horizontal-line() {
 		local hr_line
