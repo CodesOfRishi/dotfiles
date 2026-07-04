@@ -39,10 +39,10 @@ SetPS1() {
 		PS1="${PS1}\n${venv_prompt_info}"
 		PS1="${PS1}${git_info}${colr_red}󰁕${colr_rst} "
 	else
-		local colr_cyan && colr_cyan="\033[1;38;2;0;170;170m"
+		local colr_green && colr_green="\e[1;32m"
 		PS1="${colr_grey}\A ${colr_blue}\w ${colr_grey}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${colr_rst}"
 		PS1="${PS1}\n${venv_prompt_info}"
-		PS1="${PS1}${git_info}${colr_cyan}❱${colr_rst} "
+		PS1="${PS1}${git_info}${colr_green}❱${colr_rst} "
 	fi
 }
 
