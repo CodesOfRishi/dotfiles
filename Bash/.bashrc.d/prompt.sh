@@ -16,7 +16,11 @@ SetPS1() {
 	local colr_blue && colr_blue="\033[1;38;2;0;150;255m"
 
 	local git_info="$(__git_ps1 "%s")"
-	[[ -n "${git_info}" ]] && git_info="(${colr_yellow} ${git_info}${colr_rst}) "
+	[[ -n "${git_info}" ]] && git_info=" (${colr_yellow}${git_info}${colr_rst}) "
+
+	# for python virtual environment
+	local venv_prompt_info="${VIRTUAL_ENV_PROMPT}"
+	[[ -n "${venv_prompt_info}" ]] && venv_prompt_info=" ${colr_yellow}${venv_prompt_info}${colr_rst}"
 
 	generate-horizontal-line() {
 		local hr_line
@@ -32,11 +36,13 @@ SetPS1() {
 	if [[ -n "${__EXIT_CODE}" ]]; then
 		local colr_red && colr_red="\033[1;38;2;255;0;0m"
 		PS1="${colr_grey}\A ${colr_blue}\w ${colr_grey}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) ${colr_red}${__EXIT_CODE}${colr_grey}\d${colr_rst}"
-		PS1="${PS1}\n${git_info}${colr_red}󰁕${colr_rst} "
+		PS1="${PS1}\n${venv_prompt_info}"
+		PS1="${PS1}${git_info}${colr_red}󰁕${colr_rst} "
 	else
 		local colr_cyan && colr_cyan="\033[1;38;2;0;170;170m"
 		PS1="${colr_grey}\A ${colr_blue}\w ${colr_grey}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${colr_rst}"
-		PS1="${PS1}\n${git_info}${colr_cyan}❱${colr_rst} "
+		PS1="${PS1}\n${venv_prompt_info}"
+		PS1="${PS1}${git_info}${colr_cyan}❱${colr_rst} "
 	fi
 }
 
