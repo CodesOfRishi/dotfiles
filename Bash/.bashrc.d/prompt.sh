@@ -6,21 +6,26 @@
 # Ref: https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
 [[ -f "$HOME/commandline-plugins/git-prompt.sh" ]] && source "$HOME/commandline-plugins/git-prompt.sh" && export GIT_PS1_SHOWDIRTYSTATE=1
 
+readonly __PS1_COLR_RST="\e[0m"
+readonly __PS1_COLR_YELLOW="\e[01;33m"
+readonly __PS1_COLR_GREY="\033[1;38;2;122;122;122m"
+readonly __PS1_COLR_BLUE="\033[1;38;2;0;150;255m" 
+readonly __PS1_COLR_RED="\033[1;38;2;255;0;0m"
+readonly __PS1_COLR_GREEN="\e[1;32m"
+
 SetPS1() {
 	local __EXIT_CODE="$? "
 	(( __EXIT_CODE <= 0 )) && __EXIT_CODE="" || __EXIT_CODE="✘ ${__EXIT_CODE}"
 
-	local colr_rst && colr_rst="\e[0m"
-	local colr_yellow && colr_yellow="\e[01;33m"
-	local colr_grey && colr_grey="\033[1;38;2;122;122;122m"
-	local colr_blue && colr_blue="\033[1;38;2;0;150;255m"
-
-	local git_info="$(__git_ps1 "%s")"
-	[[ -n "${git_info}" ]] && git_info=" (${colr_yellow}${git_info}${colr_rst}) "
+	local git_info=""
+	if declare -F __git_ps1 >/dev/null; then
+		git_info="$(__git_ps1 "%s")"
+		[[ -n "${git_info}" ]] && git_info=" (${__PS1_COLR_YELLOW}${git_info}${__PS1_COLR_RST}) "
+	fi
 
 	# for python virtual environment
 	local venv_prompt_info="${VIRTUAL_ENV_PROMPT}"
-	[[ -n "${venv_prompt_info}" ]] && venv_prompt_info=" ${colr_yellow}${venv_prompt_info}${colr_rst}"
+	[[ -n "${venv_prompt_info}" ]] && venv_prompt_info=" ${__PS1_COLR_YELLOW}${venv_prompt_info}${__PS1_COLR_RST}"
 
 	generate-horizontal-line() {
 		local hr_line
@@ -34,15 +39,13 @@ SetPS1() {
 	(( curr_width = curr_width > COLUMNS ? COLUMNS : curr_width ))
 
 	if [[ -n "${__EXIT_CODE}" ]]; then
-		local colr_red && colr_red="\033[1;38;2;255;0;0m"
-		PS1="${colr_grey}\A ${colr_blue}\w ${colr_grey}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) ${colr_red}${__EXIT_CODE}${colr_grey}\d${colr_rst}"
+		PS1="${__PS1_COLR_GREY}\A ${__PS1_COLR_BLUE}\w ${__PS1_COLR_GREY}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) ${__PS1_COLR_RED}${__EXIT_CODE}${__PS1_COLR_GREY}\d${__PS1_COLR_RST}"
 		PS1="${PS1}\n${venv_prompt_info}"
-		PS1="${PS1}${git_info}${colr_red}󰁕${colr_rst} "
+		PS1="${PS1}${git_info}${__PS1_COLR_RED}󰁕${__PS1_COLR_RST} "
 	else
-		local colr_green && colr_green="\e[1;32m"
-		PS1="${colr_grey}\A ${colr_blue}\w ${colr_grey}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${colr_rst}"
+		PS1="${__PS1_COLR_GREY}\A ${__PS1_COLR_BLUE}\w ${__PS1_COLR_GREY}$(generate-horizontal-line $(( $COLUMNS - $curr_width ))) \d${__PS1_COLR_RST}"
 		PS1="${PS1}\n${venv_prompt_info}"
-		PS1="${PS1}${git_info}${colr_green}❱${colr_rst} "
+		PS1="${PS1}${git_info}${__PS1_COLR_GREEN}❱${__PS1_COLR_RST} "
 	fi
 }
 
