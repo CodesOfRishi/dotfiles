@@ -25,5 +25,6 @@ editor_completion() {
 	printf '\e[5n'
 }
 
-# `v` is aliased to nvim
+# `v` and 'nvim' are aliased to nvim-linux-x86_64.appimage
 complete -o nospace -F editor_completion "v"
+complete -o nospace -F editor_completion "nvim"

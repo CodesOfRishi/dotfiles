@@ -14,7 +14,8 @@ alias grep="grep --color=auto"
 alias fgrep="fgrep --color=auto"
 alias egrep="egrep --color=auto"
 alias bat="batcat"
-alias v="nvim"
+alias v="nvim-linux-x86_64.appimage"
+alias nvim="nvim-linux-x86_64.appimage"
 
 # # Add an "alert" alias for long running commands.  Use like so:
 # #   sleep 10; alert

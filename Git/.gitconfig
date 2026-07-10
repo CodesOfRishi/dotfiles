@@ -2,7 +2,7 @@
 	name = Rishi K.
 	email = contact.rishikmr@gmail.com
 [core]
-	editor = nvim
+	editor = nvim-linux-x86_64.appimage
 	pager = delta --line-numbers
 [init]
 	defaultBranch = main
