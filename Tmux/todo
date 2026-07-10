@@ -1,0 +1,18 @@
+- (DONE) map PREFX to C-space
+
+- (DONE) map PREFIX+<arrowkeys> to select pane to the respective side. (default)
+- (DONE) map PREFIX+C-<arrowkeys> to select pane to the respective side. (default: resizes the pane in the respective direction)
+- (DONE) OR map PREFIX+h / PREFIX+j / PREFIX+k / PREFIX+l to select pane to the left/down/up/right respectively.
+- (done) map Alt+h / Alt+j / Alt+k / Alt+l to select pane to the left/down/up/right respectively.
+
+- (DONE) map PREFIX+v and PREFIX+s for splitting window into panes. (default(PREFIX+s): choose a session from a list)
+		- OR map PREFIX+h / PREFIX+j / PREFIX+k / PREFIX+l to split the window into a pane in respective direction.
+
+- (DONE) map Ctrl+Shift+<arrowkeys> for resizing in respective directions.
+
+- (DONE) map PREFIX+L to select the previous active window (since the PREFIX-l will remapped as stated above). (default: switch to the last client)
+
+- map PREFIX+C-s to choose a session from a list.
+- map PREFIX+C-w to choose a window from a list.
+
+- (DONE) map PREFIX-r to something (probably to reload the Tmux configurations). (default: Redraw the current line)
