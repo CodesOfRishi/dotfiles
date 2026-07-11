@@ -4,7 +4,7 @@
 
 # Git prompt
 # Ref: https://git-scm.com/book/en/v2/Appendix-A%3A-Git-in-Other-Environments-Git-in-Bash
-[[ -f "$HOME/commandline-plugins/git-prompt.sh" ]] && source "$HOME/commandline-plugins/git-prompt.sh" && export GIT_PS1_SHOWDIRTYSTATE=1
+[[ -f "$HOME/apps/git-prompt.sh" ]] && source "$HOME/apps/git-prompt.sh" && export GIT_PS1_SHOWDIRTYSTATE=1
 
 readonly __PS1_COLR_RST="\e[0m"
 readonly __PS1_COLR_YELLOW="\e[01;33m"
