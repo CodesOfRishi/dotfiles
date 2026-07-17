@@ -118,8 +118,8 @@ unset rc
 [[ -f ~/.fzf.bash ]] && source ~/.fzf.bash
 
 # testing navita tool
-if [[ -f "${HOME}/commandline-plugins/dev/navita/navita.sh" ]]; then 
-	source "${HOME}/commandline-plugins/dev/navita/navita.sh"
+if [[ -f "${HOME}/apps/navita/navita.sh" ]]; then 
+	source "${HOME}/apps/navita/navita.sh"
 	[[ -d "${HOME}/dotfiles" ]] && alias dots="__navita__ ${HOME}/dotfiles"
 fi
 
