@@ -2,7 +2,7 @@
 # ╎ bash functions ╎
 # └╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌╌┘
 
-gh() {
+gl() {
 	[[ $( command git rev-parse --is-inside-work-tree ) ]] || return
 	command git log --date=relative --format="%C(auto)%h%d %C(white)%s %C(cyan)%an %C(black)%C(bold)%cd%C(auto)" --graph --color=always | 
 	command fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
