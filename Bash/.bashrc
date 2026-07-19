@@ -123,3 +123,6 @@ if [[ -f "${HOME}/apps/navita/navita.sh" ]]; then
 	[[ -d "${HOME}/dotfiles" ]] && alias dots="__navita__ ${HOME}/dotfiles"
 fi
 
+# activate Rust
+source "$HOME/.cargo/env"
+
