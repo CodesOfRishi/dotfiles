@@ -2,9 +2,13 @@
 # ╎ Aliases ╎
 # └╌╌╌╌╌╌╌╌╌┘
 
-alias ll="ls -lhF --color=auto"
-alias la="ls -lahF --color=auto"
-alias lc="ls -lCF --color=auto"
+# alias ll="ls -lhF --color=auto"
+# alias la="ls -lahF --color=auto"
+# alias lc="ls -lCF --color=auto"
+alias ll="eza -laF --smart-group"
+alias lt="eza -lahF --tree --smart-group -I '.git'"
+alias l="eza -aF --oneline --icons=auto"
+alias lg="eza -aF --oneline --icons=auto -G"
 alias dir="dir --color=auto"
 alias vdir="vdir --color=auto"
 alias mv="mv -i"
