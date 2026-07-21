@@ -26,12 +26,16 @@ SetPS1() {
 	local git_info=""
 	if declare -F __git_ps1 >/dev/null; then
 		git_info="$(__git_ps1 "%s")"
-		[[ -n "${git_info}" ]] && git_info=" (${__PS1_COLR_YELLOW}${git_info}${__PS1_COLR_RST}) "
+		[[ -n "${git_info}" ]] && git_info=" (${__PS1_COLR_YELLOW}${git_info}${__PS1_COLR_RST})"
 	fi
 
-	# for python virtual environment
-	local venv_prompt_info="${VIRTUAL_ENV_PROMPT}"
-	[[ -n "${venv_prompt_info}" ]] && venv_prompt_info=" ${__PS1_COLR_YELLOW}${venv_prompt_info}${__PS1_COLR_RST}"
+	# virtual environment
+	local venv_prompt_info=""
+	if [[ -n "${VIRTUAL_ENV}" ]] && [[ $VIRTUAL_ENV =~ ^$VIRTUAL_ENV ]]; then 
+		venv_prompt_info="(${__PS1_COLR_YELLOW}${VIRTUAL_ENV##*/}${__PS1_COLR_RST}) "
+	elif [[ -n "${git_info}" ]]; then
+		git_info="${git_info} "
+	fi
 
 	local _pwd="${PWD/#$HOME/\~}"
 	
@@ -43,12 +47,10 @@ SetPS1() {
 
 	if [[ -n "${__EXIT_CODE}" ]]; then
 		PS1="${__PS1_COLR_GREY}\A ${__PS1_COLR_BLUE}\w ${__PS1_COLR_GREY}${hr_line} ${__PS1_COLR_RED}${__EXIT_CODE}${__PS1_COLR_GREY}\d${__PS1_COLR_RST}"
-		PS1="${PS1}\n${venv_prompt_info}"
-		PS1="${PS1}${git_info}${__PS1_COLR_RED}󰁕${__PS1_COLR_RST} "
+		PS1="${PS1}\n${git_info}${venv_prompt_info}${__PS1_COLR_RED}󰁕${__PS1_COLR_RST} "
 	else
 		PS1="${__PS1_COLR_GREY}\A ${__PS1_COLR_BLUE}\w ${__PS1_COLR_GREY}${hr_line} \d${__PS1_COLR_RST}"
-		PS1="${PS1}\n${venv_prompt_info}"
-		PS1="${PS1}${git_info}${__PS1_COLR_GREEN}❱${__PS1_COLR_RST} "
+		PS1="${PS1}\n${git_info}${venv_prompt_info}${__PS1_COLR_GREEN}❱${__PS1_COLR_RST} "
 	fi
 }
 
