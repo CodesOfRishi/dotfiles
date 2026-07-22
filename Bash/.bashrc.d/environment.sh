@@ -20,6 +20,3 @@ export XDG_STATE_HOME="$HOME/.local/state"
 
 # colored GCC warnings and errors
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# Set the environment variable `NVM_DIR`. This tells NVM its files are stored in `~/.config/nvm/`.
-export NVM_DIR="$HOME/.config/nvm"
