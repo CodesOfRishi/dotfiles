@@ -28,7 +28,7 @@ SetPS1() {
 	local git_info=""
 	if declare -F __git_ps1 >/dev/null; then
 		git_info="$(__git_ps1 "%s")"
-		[[ -n "${git_info}" ]] && git_info="${__PS1_COLR_GREY} (${__PS1_COLR_YELLOW}${git_info}${__PS1_COLR_GREY})${__PS1_COLR_RST} "
+		[[ -n "${git_info}" ]] && git_info="${__PS1_COLR_GREY} (${__PS1_COLR_YELLOW}${git_info}${__PS1_COLR_GREY})${__PS1_COLR_RST} "
 	fi
 
 	# virtual environment
@@ -38,8 +38,8 @@ SetPS1() {
 
 	local _pwd="${PWD/#$HOME/\~}"
 	
-	# curr_width = size_of(exitcode + currenttime + pwd + spaces + date + ╭─)
-	local curr_width="$(( ${#__EXIT_CODE} + 5 + ${#_pwd} + 3 + 11 + 2 ))"
+	# curr_width = size_of(exitcode + currenttime + pwd + spaces + date + ╭)
+	local curr_width="$(( ${#__EXIT_CODE} + 5 + ${#_pwd} + 3 + 11 + 1 ))"
 	[[ -n "${venv_prompt_info}" ]] && (( curr_width = curr_width + 8 ))
 	(( curr_width = curr_width > COLUMNS ? COLUMNS : curr_width ))
 
@@ -47,10 +47,10 @@ SetPS1() {
 	__PS1_GENERATE_HORIZONTAL_LINE hr_line $(( COLUMNS - curr_width ))
 
 	if [[ -n "${__EXIT_CODE}" ]]; then
-		PS1="${__PS1_COLR_GREY}╭─ \A ${__PS1_COLR_BLUE}\w${__PS1_COLR_RST} ${venv_prompt_info}${__PS1_COLR_GREY}${hr_line} ${__PS1_COLR_RED}${__EXIT_CODE}${__PS1_COLR_GREY}\d${__PS1_COLR_RST}"
+		PS1="${__PS1_COLR_GREY}╭ \A ${__PS1_COLR_BLUE}\w${__PS1_COLR_RST} ${venv_prompt_info}${__PS1_COLR_GREY}${hr_line} ${__PS1_COLR_RED}${__EXIT_CODE}${__PS1_COLR_GREY}\d${__PS1_COLR_RST}"
 		PS1="${PS1}\n${__PS1_COLR_GREY}╰─•${git_info}${__PS1_COLR_RED}󰁕${__PS1_COLR_RST} "
 	else
-		PS1="${__PS1_COLR_GREY}╭─ \A ${__PS1_COLR_BLUE}\w${__PS1_COLR_RST} ${venv_prompt_info}${__PS1_COLR_GREY}${hr_line} \d${__PS1_COLR_RST}"
+		PS1="${__PS1_COLR_GREY}╭ \A ${__PS1_COLR_BLUE}\w${__PS1_COLR_RST} ${venv_prompt_info}${__PS1_COLR_GREY}${hr_line} \d${__PS1_COLR_RST}"
 		PS1="${PS1}\n${__PS1_COLR_GREY}╰─•${git_info}${__PS1_COLR_GREEN}❱${__PS1_COLR_RST} "
 	fi
 }
