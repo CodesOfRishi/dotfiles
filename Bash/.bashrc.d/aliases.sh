@@ -20,6 +20,7 @@ alias egrep="egrep --color=auto"
 # alias bat="batcat"
 alias v="nvim-linux-x86_64.appimage"
 alias nvim="nvim-linux-x86_64.appimage"
+alias wget="wget --hsts-file=$XDG_DATA_HOME/wget-hsts"
 
 # # Add an "alert" alias for long running commands.  Use like so:
 # #   sleep 10; alert
