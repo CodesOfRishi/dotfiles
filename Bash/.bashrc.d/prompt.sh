@@ -27,13 +27,13 @@ SetPS1() {
 	local git_info=""
 	if declare -F __git_ps1 >/dev/null; then
 		git_info="$(__git_ps1 "%s")"
-		[[ -n "${git_info}" ]] && git_info=" (${__PS1_COLR_YELLOW}${git_info}${__PS1_COLR_RST}) "
+		[[ -n "${git_info}" ]] && git_info="${__PS1_COLR_GREY} (${__PS1_COLR_YELLOW}${git_info}${__PS1_COLR_GREY})${__PS1_COLR_RST} "
 	fi
 
 	# virtual environment
 	local venv_prompt_info=""
 	# local venv_project_info="${VIRTUAL_ENV%/*}"
-	[[ -n "${VIRTUAL_ENV}" ]] && [[ $PWD =~ ^${VIRTUAL_ENV%/*} ]] && venv_prompt_info="(${__PS1_COLR_ORANGE}${VIRTUAL_ENV##*/}${__PS1_COLR_RST}) "
+	[[ -n "${VIRTUAL_ENV}" ]] && [[ $PWD =~ ^${VIRTUAL_ENV%/*} ]] && venv_prompt_info="${__PS1_COLR_GREY}(${__PS1_COLR_ORANGE}${VIRTUAL_ENV##*/}${__PS1_COLR_GREY})${__PS1_COLR_RST} "
 
 	local _pwd="${PWD/#$HOME/\~}"
 	
