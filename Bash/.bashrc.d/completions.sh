@@ -19,15 +19,19 @@ editor_completion() {
 		--bind=tab:down,btab:up \
 		--cycle)"; then
 
-		[[ -d "${selected_result}" ]] && selected_result="${selected_result}/" || selected_result="${selected_result} "
-		COMPREPLY=( "${selected_result}" )
+		if [[ -d "${selected_result}" ]]; then 
+			COMPREPLY=( "${selected_result}/" )
+			compopt -o nospace 2>/dev/null
+		else
+			COMPREPLY=( "${selected_result}" )
+		fi
 	fi
 	printf '\e[5n'
 }
 
 # `v` and 'nvim' are aliased to nvim-linux-x86_64.appimage
-complete -o nospace -F editor_completion "v"
-complete -o nospace -F editor_completion "nvim"
+complete -o filenames -F editor_completion "v"
+complete -o filenames -F editor_completion "nvim"
 
 # Completions for Fnm
 _fnm() {
