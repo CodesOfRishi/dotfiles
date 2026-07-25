@@ -6,7 +6,7 @@
 # alias la="ls -lahF --color=auto"
 # alias lc="ls -lCF --color=auto"
 alias ll="eza -laF --smart-group"
-alias lt="eza -lahF --tree --smart-group -I '.git'"
+alias lt="eza -ahF --tree --smart-group -I '.git'"
 alias la="eza -aF --oneline --icons=auto"
 alias l="eza -aF --oneline --icons=auto -G"
 alias dir="dir --color=auto"
