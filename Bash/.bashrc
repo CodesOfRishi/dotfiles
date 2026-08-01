@@ -5,13 +5,23 @@
 # ██╗██████╔╝██║  ██║███████║██║  ██║██║  ██║╚██████╗
 # ╚═╝╚═════╝ ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ Rishi K.
 
-# start a Tmux session if not already running
-if type -apf tmux &> /dev/null && ! tmux has-session &> /dev/null && [[ -n "${PS1}" ]] && [[ ! "${TERM}" =~ screen ]] && [[ ! "${TERM}" =~ (t|T)mux ]] && [[ -z "${TMUX}" ]]; then
-	exec tmux -u new-session -s rishi-s1 -n 1stWin
-elif [[ "$( tmux list-panes | wc -l )" -eq 1 ]] && type -apf fastfetch &> /dev/null; then
-	# fastfetch 
-	printf "%s\n" "Welcome Rishi!"
+# # start a Tmux session if not already running
+# if type -apf tmux &> /dev/null && ! tmux has-session &> /dev/null && [[ -n "${PS1}" ]] && [[ ! "${TERM}" =~ screen ]] && [[ ! "${TERM}" =~ (t|T)mux ]] && [[ -z "${TMUX}" ]]; then
+# 	exec tmux -u new-session -s rishi-s1 -n 1stWin
+# # elif [[ "$( tmux list-panes | wc -l )" -eq 1 ]] && type -apf fastfetch &> /dev/null; then
+# elif [[ "$( tmux list-panes | wc -l )" -eq 1 ]]; then
+# 	# fastfetch 
+# 	printf "%s\n" "Welcome Rishi!"
+# fi
+
+if type -apf fastfetch &> /dev/null && [[ ! -n "${NVIM}" ]]; then
+	fastfetch
+	printf "\n"
 fi
+printf "%s\n" '\ \      /      |                            _ \ _)       |    _)
+ \ \ \  /  -_)  |   _|   _ \   ` \    -_)      /  | (_-<    \   |
+  \_/\_/ \___| _| \__| \___/ _|_|_| \___|   _|_\ _| ___/ _| _| _|
+'
 
 # ┌───────────────────────────────────────────┐
 # │ Default Linux Mint .bashrc configurations │
