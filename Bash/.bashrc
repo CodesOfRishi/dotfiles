@@ -132,3 +132,7 @@ if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env --shell bash)"
 fi
+
+# atuin
+source "$HOME/.atuin/bin/env"
+eval "$(atuin init bash)"
