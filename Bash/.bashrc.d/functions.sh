@@ -7,8 +7,8 @@ gl() {
 	command git log --date=relative --format="%C(auto)%h%d %C(white)%s %C(cyan)%an %C(black)%C(bold)%cd%C(auto)" --graph --color=always | 
 	command fzf --ansi --no-sort --reverse --multi --bind 'ctrl-s:toggle-sort' \
 		--header 'Press CTRL-S to toggle sort' \
-		--preview='grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | delta -n' \
-		--bind 'enter:execute(grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | delta -n | less -R)' \
+		--preview='rg -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | delta -n' \
+		--bind 'enter:execute(rg -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always | delta -n | less -R)' \
 		--bind 'ctrl-/:toggle-preview'
 		# --preview='grep -o "[a-f0-9]\{7,\}" <<< {} | xargs git show --color=always' | grep -o "[a-f0-9]\{7,\}"
 		# --preview="git show {1} --color=always" | grep -o "[a-f0-9]\{7,\}"
