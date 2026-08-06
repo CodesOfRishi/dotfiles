@@ -145,4 +145,5 @@ fi
 
 # atuin
 source "$HOME/.atuin/bin/env"
-eval "$(atuin init bash)"
+# eval "$(atuin init bash --disable-up-arrow)"
+source "$HOME/.bashrc.d/apps/atuin.sh"
