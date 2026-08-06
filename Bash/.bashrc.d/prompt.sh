@@ -12,7 +12,7 @@
 
 # catppuccin latte
 # PS1="\033[1;38;2;122;122;122m${ps1_ref_hr_line}\e[0m"
-PS1='\n$(prmt --shell bash --code $? "{time:dim} {path:#7287fd:r}{git:#8839ef:: :}{python:yellow:: 󰌠 v:}{rust:red::  v:}{node:green::  v:}{go:cyan:: 󰟓 v:} {ok:green:❱}{fail:red:❱} ")'
+PS1='$(prmt --shell bash --code $? "{time:dim} {path:#7287fd:r}{git:#8839ef:: :}{python:yellow:: 󰌠 v:}{rust:red::  v:}{node:green::  v:}{go:cyan:: 󰟓 v:} {ok:green:❱}{fail:red:❱} ")'
 
 ## catppuccin mocha
 # PS1='\n$(prmt --shell bash --code $? "{time:dim} {path:#b4befe:r}{git:#cba6f7:: :}{python:yellow:: 󰌠 v:}{rust:red::  v:}{node:green::  v:}{go:cyan:: 󰟓 v:} {ok:green:❱}{fail:red:❱} ")'
