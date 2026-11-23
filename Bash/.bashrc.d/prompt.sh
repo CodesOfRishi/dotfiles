@@ -11,7 +11,7 @@
 # PS1='\n$(prmt --shell bash --code $? "{time:dim} {path:cyan:r}{git:purple::  :}{python:yellow:: 󰌠 v:}{rust:red::  v:}{node:green::  v:}{go:cyan:: 󰟓 v:} {ok:green:❱}{fail:red:❱} ")'
 
 # custom
-PS1='$(prmt --shell bash --code $? "{time:dim:: :}{path:#0096FF:r:  :}{git:purple::  :}{python:yellow:: 󰌠 v:}{rust:red::  v:}{node:green::  v:}{go:cyan:: 󰟓 v:} {ok:green:❱}{fail:red:❱} ")'
+PS1='$(prmt --shell bash --code $? "{time:dim:: :}{path:#0096FF:r:  :}{git:purple::  :}{python:yellow:: 󰌠 v:}{rust:red::  v:}{node:green::  v:}{go:cyan:: 󰟓 v:}\n{ok:green:❱}{fail:red:❱} ")'
 
 # gruvbox
 # PS1='$(prmt --shell bash --code $? "{time:dim:: :}{path:#d79921:r:  :}{git:#689d6a::  :}{python:yellow:: 󰌠 v:}{rust:red::  v:}{node:green::  v:}{go:cyan:: 󰟓 v:} {ok:green:❱}{fail:red:❱} ")'
